@@ -1,0 +1,510 @@
+<!--
+slidedeck: A modification of the Google IO 2012 HTML5 slide template
+URL: https://github.com/rmcgibbo/slidedeck
+
+Based on https://github.com/francescolaffi/elastic-google-io-slides, and
+ultimately:
+
+Google IO 2012 HTML5 Slide Template
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Best Practices in Coding</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+   <link rel="shortcut icon" href=" favicon.ico"/> 
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+
+  <!-- MathJax support  -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    showProcessingMessages: false,
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+<slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+
+    <h1> Best Practices in Coding</h1>
+    <h2> Not just Python</h2>
+    <p> Tim van Boxtel</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Contents</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>Introduction</li>
+<li>Version Control (git)</li>
+<li>Open Sourced Projects</li>
+<li>Exercise: Collaborative Coding</li>
+<li>Conclusion</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>Introduction</h2>
+      <h3>Why code properly?</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Introduction</h2>
+      <h3>Why code properly?</h3>
+    </hgroup>
+    <article ><p>Proper coding practices should be considered ...</p>
+<ul class="build">
+<li>if you are developing the code with others</li>
+<li>if you are distributing the code with users</li>
+<li>if you will be coming back to code later</li>
+<li>just cause ...</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>Version Control</h2>
+      <h3>I like git</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Making the case</h3>
+    </hgroup>
+    <article ><p>Version control is all about keeping track of changes as well being able to quickly try new things and/or go back to a better time.</p>
+<ul class="build">
+<li>What if you have 20 people working on a set of code?</li>
+<li>What if you want to try a new idea without interfering with a 'master' version?</li>
+<li>What if you want to have different versions to distribute?</li>
+<li>What if you realize you made a terrible mistake a month ago?</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Short History</h3>
+    </hgroup>
+    <article ><p>The problem case has been known for decades, the solutions have evolved:</p>
+<ul class="build">
+<li>Originally, people would work on a single codebase with file locks - <span class="red">bad</span></li>
+<li>Later, centralized repositories evolved - <span class="yellow">better</span></li>
+<li>Recently, a distributed approach has gained the most traction - <span class="green">best</span></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>The idea</h3>
+    </hgroup>
+    <article ><p>The developer:</p>
+<ul class="build">
+<li>Makes changes as they wish locally</li>
+<li>Commits the changes often</li>
+<li>Updates/push their changes to a network host</li>
+<li>Pull/Fetch other changes from the network host</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="img-top-center" >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Centralized Repositories</h3>
+    </hgroup>
+    <article ><p><img src="figures/centralized-version-control.png" style="width: 60%;"></p>
+<footer class="source">https://homes.cs.washington.edu/~mernst/advice/version-control.html</footer></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Centralized Repositories</h3>
+    </hgroup>
+    <article ><p>Centralized Version Control Systems:</p>
+<ul class="build">
+<li>Solves the problem of having multiple copies of a codebase locally</li>
+<li>Requires a server hosting the master copy</li>
+<li>Each and every change must be updated to the server</li>
+<li>Difficult to try new ideas or share updates with only a few people</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="img-top-center" >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Decentralized Repositories</h3>
+    </hgroup>
+    <article ><p><img src="figures/decentralized-version-control.png" style="width: 60%;"></p>
+<footer class="source">https://homes.cs.washington.edu/~mernst/advice/version-control.html</footer></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Decentralized Repositories</h3>
+    </hgroup>
+    <article ><ul class="build">
+<li>No one master copy, every developer has the master</li>
+<li>No server required, though hosting of repositories on servers is common</li>
+<li>Can push many commits at once</li>
+<li>Easy to try new ideas with branching</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>Decentralized Repositories</h3>
+    </hgroup>
+    <article ><p>Common DVCS (Distributed Version Control System's):</p>
+<ul class="build">
+<li>git (my preference)</li>
+<li>Mercurial</li>
+<li>Bazaar</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="img-top-center" >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>git</h3>
+    </hgroup>
+    <article ><p><img src="figures/git-workflow.svg"></p>
+<footer class="source">https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow</footer></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>git</h3>
+    </hgroup>
+    <article ><p>Most DVCS allow you to:</p>
+<ul class="build">
+<li>Branch from a commit point to a new lineage</li>
+<li>Merge from another branch</li>
+<li>Roll back to any previous state</li>
+<li>Take certain parts from any commit (cherry pick)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>git GUI</h3>
+    </hgroup>
+    <article ><p>Many use git straight from the command line, though many GUI's are available</p>
+<p><a href="http://git-scm.com/downloads/guis">http://git-scm.com/downloads/guis</a> </p>
+<ul>
+<li>I recommend using one of these if the command line is a scary thought for you</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>git Repositories</h3>
+    </hgroup>
+    <article ><p>Repositories are shared, usually on a server.  There are many services set up for this, e.g.:</p>
+<ul class="build">
+<li>GitHub <a href="https://github.com">www.github.com</a></li>
+<li>Bitbucket <a href="https://bitbucket.org/">www.bitbucket.org</a></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Version Control</h2>
+      <h3>git Repositories</h3>
+    </hgroup>
+    <article ><ul class="build">
+<li>You can 'clone' other people's repositories locally</li>
+<li>You can 'fork' other repositories, which copies it to your user space</li>
+<li>Different repository locations are handled via 'remotes'</li>
+<li>All of this is the heart of most open sourced projects</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>Open Sourced Projects</h2>
+      <h3>Free (as in beer and speech)</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Open Sourced Projects</h2>
+      <h3>Licenses</h3>
+    </hgroup>
+    <article ><p>Generally, code you write </p>
+<ul class="build">
+<li>belongs to you</li>
+<li>cannot be modified by anyone else</li>
+<li>cannot be copied by anyone else</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Open Sourced Projects</h2>
+      <h3>Licenses</h3>
+    </hgroup>
+    <article ><p>If you wish to share your code with the world, a license must be distributed with the codebase:</p>
+<ul class="build">
+<li>The license grants certain privileges to other users</li>
+<li>The license can be as restrictive or as open as you wish</li>
+<li>There are many different types of free software licenses, some common ones:<ul class="build">
+<li>GNU Public License</li>
+<li>Apache License</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Open Sourced Projects</h2>
+      <h3>Distributing</h3>
+    </hgroup>
+    <article ><p>Typically, if you fork an open sourced project and modify it, it is required to re-release it under a similar license</p>
+<ul class="build">
+<li>The power is not in the code, rather in the use of the code</li>
+<li>Old software models try to restrict code distribution<ul class="build">
+<li>This limits who can use it</li>
+<li>Makes learning how to code just as difficult</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Open Sourced Projects</h2>
+      <h3>Free Software</h3>
+    </hgroup>
+    <article ><p>There has been a real paradigm shift amongst developers:</p>
+<ul class="build">
+<li>Software should be free<ul class="build">
+<li>Free as in beer</li>
+<li>Free as in speech</li>
+</ul>
+</li>
+<li>We all use other people's code, so why not contribute ourselves?</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Open Sourced Projects</h2>
+      <h3>Corporate Development</h3>
+    </hgroup>
+    <article ><p>Many corporations are using open-sourced software.  Their developers improve  the source and contribute to the various projects.  </p>
+<p>Typically:</p>
+<ul class="build">
+<li>They can still make money off of free software</li>
+<li>The open source code is better</li>
+<li>The code is more robust</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark nobackground" >
+  
+    <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
+    <hgroup class="auto-fadein">
+      <h2>Collaborative Coding</h2>
+      <h3>Exercise</h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collaborative Coding</h2>
+      <h3>GitHub Repository</h3>
+    </hgroup>
+    <article ><p>I have an empty repository set up for us to use today:</p>
+<p><a href="https://github.com/SunPowered/python-workshop-collab">https://github.com/SunPowered/python-workshop-collab</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collaborative Coding</h2>
+      <h3>Clone Repository</h3>
+    </hgroup>
+    <article ><p>Clone the repository:</p>
+<pre class="code">git clone https://github.com/SunPowered/python-workshop-collab.git</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collaborative Coding</h2>
+      <h3>Issue Tracking</h3>
+    </hgroup>
+    <article ><p>Check out any open issues to contribute to at</p>
+<p><a href="https://github.com/SunPowered/python-workshop-collab/issues">https://github.com/SunPowered/python-workshop-collab/issues</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collaborative Coding</h2>
+      <h3>Useful git workflow</h3>
+    </hgroup>
+    <article ><p>Create branch</p>
+<pre>
+    git branch "branchname"
+</pre>
+
+<p>Commit Changes</p>
+<pre>
+    git add "filename"
+    git commit -m "A descriptive commit message"
+</pre>
+
+<p>Push Changes Remotely</p>
+<pre>
+    git push origin
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collaborative Coding</h2>
+      <h3>Code Away!</h3>
+    </hgroup>
+    <article ><ul>
+<li>Pick an issue</li>
+<li>Create a branch for the fix</li>
+<li>Code the fix</li>
+<li>Commit often</li>
+<li>Push changes to repository</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <!-- <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside> -->
+  <article class="flexbox vleft auto-fadein">
+    <h2> Thanks everyone!</h2>
+    <p></p>
+  </article>
+  <p data-config-contact class="auto-fadein"> <span>email</span> vanboxtj@mcmaster.ca<br/> <span>github</span> <a href="http://github.com">SunPowered</a></p>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
