@@ -169,7 +169,7 @@ build_lists: true
     + Evaluates lines and blocks of code
 - Environment
     + Builtins
-    + <pre data-lang="python">>>>len(dir(__builtins__))
+    + <pre data-lang="python">>>>len(dir(\__builtins__))
         145</pre>
 
 ---
@@ -298,7 +298,7 @@ build_lists: true
 
 - Classes:
     + <pre class="prettyprint" data-lang="python">
-        class Person(args):
+        class Person(Animal):
             def \__init__(self, name, age):
                 self.name = name
                 self.age = age

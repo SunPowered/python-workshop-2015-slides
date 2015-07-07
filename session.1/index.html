@@ -322,7 +322,7 @@ URL: https://code.google.com/p/io-2012-slides
 </li>
 <li>Environment<ul class="build">
 <li>Builtins</li>
-<li><pre data-lang="python">&gt;&gt;&gt;len(dir(<strong>builtins</strong>))
+<li><pre data-lang="python">&gt;&gt;&gt;len(dir(__builtins__))
     145</pre></li>
 </ul>
 </li>
@@ -523,7 +523,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article ><ul class="build">
 <li>Classes:<ul class="build">
 <li><pre class="prettyprint" data-lang="python">
-    class Person(args):
+    class Person(Animal):
         def __init__(self, name, age):
             self.name = name
             self.age = age
